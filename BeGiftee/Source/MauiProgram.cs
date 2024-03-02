@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using BeGiftee.Source.Services.Network;
+using Microsoft.Extensions.Logging;
 
 namespace BeGiftee.Source
 {
@@ -14,6 +15,8 @@ namespace BeGiftee.Source
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.Services.AddSingleton<HttpService>();
 
 #if DEBUG
             builder.Logging.AddDebug();
