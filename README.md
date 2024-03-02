@@ -37,6 +37,17 @@ Before you begin, ensure you have the following tools installed:
 - **Gift Suggestions:** Browse through a curated list of gifts for different occasions.
 - **Cross-Platform:** Available on Windows, macOS, Android, and iOS.
 
+# TODO
+
+- Create the login and register pages.
+- Create an authentication service that manages the user session.
+- Create the gifts list view.
+- Make the gifts CRUD work.
+- Include the labels CRUD.
+- Make Friendship available.
+- Create style classes to make components (inputs, buttons) consistent across the application.
+- Create some localization system. Translating strings, date formatting, etc.
+
 ## License
 
 This project has all rights reserved José Manuel Blasco 2024 - see the [LICENSE.md](LICENSE) file for details.
