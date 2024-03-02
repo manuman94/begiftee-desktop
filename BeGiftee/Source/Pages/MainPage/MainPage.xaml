@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:BeGiftee.Source.Views.Auth"
+             x:Class="BeGiftee.MainPage">
+
+    <Grid Padding="20" RowSpacing="10">
+        <!-- Grid column definitions -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Column: Login Form  -->
+        <views:LoginView />
+
+        <!-- Right Column: Company Logo and Lorem Ipsum Text -->
+        <VerticalStackLayout Grid.Column="1" Spacing="20" Padding="20" HorizontalOptions="Start" MaximumWidthRequest="800">
+            <Image Source="Resources\Images\logos\logo_white.png" HorizontalOptions="Start" MaximumHeightRequest="100"/>
+            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."/>
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
