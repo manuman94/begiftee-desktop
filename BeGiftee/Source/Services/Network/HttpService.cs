@@ -51,7 +51,7 @@ namespace BeGiftee.Source.Services.Network
             var content = await response.Content.ReadAsStringAsync();
             try
             {
-                var errorResponse = JsonConvert.DeserializeObject<ApiErrorResponse>(content);
+                var errorResponse = JsonConvert.DeserializeObject<ApiErrorResponseDto>(content);
                 if (errorResponse != null)
                 {
                     return new ApiException(errorResponse);

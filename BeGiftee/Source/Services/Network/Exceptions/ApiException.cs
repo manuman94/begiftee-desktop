@@ -4,9 +4,9 @@ namespace BeGiftee.Source.Services.Network.Exceptions
 {
     public class ApiException : Exception
     {
-        public ApiErrorResponse ErrorResponse { get; private set; }
+        public ApiErrorResponseDto ErrorResponse { get; private set; }
 
-        public ApiException(ApiErrorResponse errorResponse)
+        public ApiException(ApiErrorResponseDto errorResponse)
             : base($"{errorResponse.Error}: {errorResponse.Message}")
         {
             ErrorResponse = errorResponse;

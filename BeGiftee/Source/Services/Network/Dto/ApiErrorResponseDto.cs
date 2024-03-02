@@ -1,6 +1,6 @@
 ﻿namespace BeGiftee.Source.Services.Network.DTO
 {
-    public class ApiErrorResponse
+    public class ApiErrorResponseDto
     {
         public required int StatusCode { get; set; }
         public required string Error { get; set; }
