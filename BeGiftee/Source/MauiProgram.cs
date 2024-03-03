@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using BeGiftee.Source.Services.Network;
+using BeGiftee.Source.Services.Network.Clients;
+using Microsoft.Extensions.Logging;
 
 namespace BeGiftee.Source
 {
@@ -9,6 +11,7 @@ namespace BeGiftee.Source
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .RegisterAppServices()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -19,7 +22,14 @@ namespace BeGiftee.Source
             builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            return builder.Build(); ; 
+        }
+
+        public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddSingleton<HttpService>();
+            mauiAppBuilder.Services.AddSingleton<IAuthenticationService, HttpAuthenticationService>();
+            return mauiAppBuilder;
         }
     }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BeGiftee.Source.Pages.MyGiftList"
+             Title="MyGiftList">
+    <ContentPage.Resources>
+        <Style x:Key="CardStyle" TargetType="Frame">
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="BorderColor" Value="LightGray"/>
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="HasShadow" Value="True"/>
+        </Style>
+
+        <Style x:Key="ButtonTagStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="TextColor" Value="Blue"/>
+            <Setter Property="BorderWidth" Value="0"/>
+            <Setter Property="CornerRadius" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <CollectionView ItemsSource="{Binding Gifts}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Frame Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Name}" FontAttributes="Bold"/>
+                        <Label Text="{Binding Description}" LineBreakMode="NoWrap"/>
+                        <HorizontalStackLayout>
+                            <Button Text="{Binding Console1}" Style="{StaticResource ButtonTagStyle}"/>
+                            <Button Text="{Binding Console2}" Style="{StaticResource ButtonTagStyle}"/>
+                            <!-- Add more buttons/tags as needed -->
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New gift" Command="{Binding NewGiftCommand}"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>
