@@ -1,10 +1,9 @@
-﻿using epj.RouteGenerator;
-using BeGiftee.Source.Services.Network;
+﻿using BeGiftee.Source.Services.Network;
+using BeGiftee.Source.Services.Network.Clients;
 using Microsoft.Extensions.Logging;
 
 namespace BeGiftee.Source
 {
-    [AutoRoutes("Page")]
     public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()
@@ -19,6 +18,7 @@ namespace BeGiftee.Source
                 });
 
             builder.Services.AddSingleton<HttpService>();
+            builder.Services.AddSingleton<IAuthenticationService, HttpAuthenticationService>();
 
 #if DEBUG
             builder.Logging.AddDebug();

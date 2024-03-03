@@ -17,7 +17,7 @@ namespace BeGiftee.Source.Services.Network
             {
                 BaseAddress = new Uri(_baseURL)
             };
-            _jwtToken = "";
+            _jwtToken = string.Empty;
         }
 
         public void SetJwtToken(string jwtToken)
@@ -35,7 +35,7 @@ namespace BeGiftee.Source.Services.Network
 
         private async Task<T?> NonGetAsync<T>(string method, string uri, object? data = null)
         {
-            var content = new StringContent("");
+            var content = new StringContent(string.Empty);
             if ( data != null )
             {
                 content = new StringContent(JsonConvert.SerializeObject(data), System.Text.Encoding.UTF8, "application/json");

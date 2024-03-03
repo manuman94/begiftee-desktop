@@ -3,22 +3,22 @@ using BeGiftee.Source.Services.Network.DTO;
 
 namespace BeGiftee.Source.Services.Network.Clients
 {
-    public class AuthenticationService
+    public class HttpAuthenticationService : IAuthenticationService
     {
         private readonly HttpService _httpService;
         private string _accessToken;
         private string _refreshToken;
 
-        public AuthenticationService(HttpService httpService)
+        public HttpAuthenticationService(HttpService httpService)
         {
             _httpService = httpService;
-            _accessToken = "";
-            _refreshToken = "";
+            _accessToken = string.Empty;
+            _refreshToken = string.Empty;
         }
 
         public bool isLoggedIn()
         {
-            return _accessToken != "";
+            return _accessToken != string.Empty;
         }
 
         public async Task<bool> Login(string username, string password)
@@ -55,9 +55,9 @@ namespace BeGiftee.Source.Services.Network.Clients
 
         public void Logout()
         {
-            _accessToken = "";
-            _refreshToken = "";
-            _httpService.SetJwtToken("");
+            _accessToken = string.Empty;
+            _refreshToken = string.Empty;
+            _httpService.SetJwtToken(string.Empty);
         }
     }
 }

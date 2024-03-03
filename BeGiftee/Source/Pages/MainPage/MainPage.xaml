@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:BeGiftee.Source.Views.Auth"
-             x:Class="BeGiftee.MainPage">
+             x:Class="BeGiftee.MainPage"
+             Shell.NavBarIsVisible="False">
 
     <Grid Padding="20" RowSpacing="10">
         <!-- Grid column definitions -->
