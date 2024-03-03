@@ -1,5 +1,5 @@
 using BeGiftee.Source.Helpers;
-using BeGiftee.Source.Services.Network.Clients;
+using BeGiftee.Source.Services.Api;
 
 namespace BeGiftee.Source.Pages.Register;
 

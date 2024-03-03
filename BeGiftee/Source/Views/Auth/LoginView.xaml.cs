@@ -1,8 +1,8 @@
 using BeGiftee.Source.Helpers;
 using BeGiftee.Source.Pages.Register;
-using BeGiftee.Source.Services.Network.Clients;
 using BeGiftee.Source.Pages;
 using BeGiftee.Source.Pages.Auth.ForgotPassword;
+using BeGiftee.Source.Services.Api;
 
 namespace BeGiftee.Source.Views.Auth;
 

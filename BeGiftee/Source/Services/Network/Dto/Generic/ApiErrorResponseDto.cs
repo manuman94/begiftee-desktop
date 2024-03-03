@@ -1,4 +1,4 @@
-﻿namespace BeGiftee.Source.Services.Network.Dto
+﻿namespace BeGiftee.Source.Services.Network.Dto.Generic
 {
     public class ApiErrorResponseDto
     {

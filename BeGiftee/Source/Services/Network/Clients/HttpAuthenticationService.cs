@@ -1,5 +1,7 @@
 ﻿
+using BeGiftee.Source.Services.Api;
 using BeGiftee.Source.Services.Network.Dto;
+using BeGiftee.Source.Services.Network.Dto.Auth;
 
 namespace BeGiftee.Source.Services.Network.Clients
 {
@@ -19,10 +21,10 @@ namespace BeGiftee.Source.Services.Network.Clients
             var loginData = new { username, password };
             var loginResponse = await _httpService.PostAsync<AuthResponseDto>(ApiEndpoints.Login, loginData);
 
-            if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.AccessToken))
+            if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.access_token))
             {
-                _accessToken = loginResponse.AccessToken;
-                _refreshToken = loginResponse.RefreshToken;
+                _accessToken = loginResponse.access_token;
+                _refreshToken = loginResponse.refresh_token;
                 _httpService.SetJwtToken(_accessToken);
                 return true;
             }
@@ -35,10 +37,10 @@ namespace BeGiftee.Source.Services.Network.Clients
             var registerData = new { email, username, password };
             var registerResponse = await _httpService.PostAsync<AuthResponseDto>(ApiEndpoints.Register, registerData);
 
-            if (registerResponse != null && !string.IsNullOrEmpty(registerResponse.AccessToken))
+            if (registerResponse != null && !string.IsNullOrEmpty(registerResponse.access_token))
             {
-                _accessToken = registerResponse.AccessToken;
-                _refreshToken = registerResponse.RefreshToken;
+                _accessToken = registerResponse.access_token;
+                _refreshToken = registerResponse.refresh_token;
                 _httpService.SetJwtToken(_accessToken);
                 return true;
             }

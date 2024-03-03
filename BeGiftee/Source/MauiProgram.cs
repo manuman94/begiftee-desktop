@@ -1,4 +1,5 @@
-﻿using BeGiftee.Source.Services.Network;
+﻿using BeGiftee.Source.Services.Api;
+using BeGiftee.Source.Services.Network;
 using BeGiftee.Source.Services.Network.Clients;
 using Microsoft.Extensions.Logging;
 
@@ -29,6 +30,7 @@ namespace BeGiftee.Source
         {
             mauiAppBuilder.Services.AddSingleton<HttpService>();
             mauiAppBuilder.Services.AddSingleton<IAuthenticationService, HttpAuthenticationService>();
+            mauiAppBuilder.Services.AddSingleton<IGiftService, HttpGiftService>();
             return mauiAppBuilder;
         }
     }

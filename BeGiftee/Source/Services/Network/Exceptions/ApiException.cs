@@ -1,4 +1,4 @@
-﻿using BeGiftee.Source.Services.Network.Dto;
+﻿using BeGiftee.Source.Services.Network.Dto.Generic;
 
 namespace BeGiftee.Source.Services.Network.Exceptions
 {

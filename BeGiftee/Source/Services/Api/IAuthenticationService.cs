@@ -1,5 +1,4 @@
-﻿
-namespace BeGiftee.Source.Services.Network.Clients
+﻿namespace BeGiftee.Source.Services.Api
 {
     public interface IAuthenticationService
     {
