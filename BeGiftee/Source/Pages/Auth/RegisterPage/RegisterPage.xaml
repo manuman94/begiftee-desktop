@@ -10,9 +10,9 @@
                FontSize="Large"
                FontAttributes="Bold"/>
 
-        <Entry Placeholder="Username" />
-        <Entry Placeholder="Email address" />
-        <Entry Placeholder="Password" IsPassword="True" />
+        <Entry x:Name="username" Placeholder="Username" />
+        <Entry x:Name="email" Placeholder="Email address" />
+        <Entry x:Name="password" Placeholder="Password" IsPassword="True" />
         
         <HorizontalStackLayout Spacing="10">
             <CheckBox />
@@ -20,7 +20,7 @@
         </HorizontalStackLayout>
         
         <Button Text="Create my free account"
-                CornerRadius="5"/>
+                Clicked="OnRegisterButtonClicked"/>
 
         <HorizontalStackLayout Spacing="0">
             <Button Text="Go back" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" BackgroundColor="Transparent" Clicked="OnGoBackButtonClicked" />

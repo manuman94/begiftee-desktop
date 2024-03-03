@@ -11,8 +11,8 @@
             <Button Text="Sign up" TextColor="#4CAF50" BackgroundColor="Transparent" Clicked="OnSignUpButtonClicked" />
         </HorizontalStackLayout>
 
-        <Entry Placeholder="Username" />
-        <Entry Placeholder="Password" IsPassword="True" />
+        <Entry x:Name="username" Placeholder="Username" />
+        <Entry x:Name="password" Placeholder="Password" IsPassword="True" />
 
         <HorizontalStackLayout Spacing="10">
             <CheckBox />
@@ -20,13 +20,12 @@
         </HorizontalStackLayout>
 
         <Button Text="Sign in"
-                    BackgroundColor="#4CAF50"
-                    TextColor="White"
-                    CornerRadius="5"/>
+                    Clicked="OnSignInButtonClicked"/>
 
         <Button Text="Forgot password?"
                     TextColor="#4CAF50"
                     BackgroundColor="Transparent"
+                    Clicked="OnForgotPasswordButtonClicked"
                     HorizontalOptions="End"/>
 
     </VerticalStackLayout>

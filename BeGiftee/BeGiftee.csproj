@@ -24,7 +24,7 @@
 		<ApplicationTitle>BeGiftee</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.begiftee</ApplicationId>
+		<ApplicationId>com.jblasco.begiftee</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -39,15 +39,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- App Icon -->
+		<!-- App Icon 
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		-->
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\**" />
-		
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -65,20 +65,26 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="Microsoft.CodeCoverage" Version="17.9.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
-		<PackageReference Include="Moq" Version="4.20.70" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="NUnit" Version="4.1.0" />
-		<PackageReference Include="NUnit.ConsoleRunner" Version="3.17.0" />
-		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
 	</ItemGroup>
 	
 	<ItemGroup>
-	  <MauiXaml Update="Source\Pages\Register\RegisterPage.xaml">
+	  <Compile Update="Source\Pages\Auth\ForgotPassword\ForgotPasswordPage.xaml.cs">
+	    <DependentUpon>ForgotPasswordPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <MauiXaml Update="Source\Pages\Auth\ForgotPassword\ForgotPasswordPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Source\Pages\MyGiftList\MyGiftList.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Source\Pages\Auth\RegisterPage\RegisterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Source\Views\Auth\LoginView.xaml">

@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Headers;
-using BeGiftee.Source.Services.Network.DTO;
+using System.Net;
+using BeGiftee.Source.Services.Network.Dto;
 using BeGiftee.Source.Services.Network.Exceptions;
 using Newtonsoft.Json;
 
@@ -26,27 +27,22 @@ namespace BeGiftee.Source.Services.Network
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwtToken);
         }
 
-        public async Task<T?> GetAsync<T>(string uri)
-        {
-            var response = await _httpClient.GetAsync(uri);
-            var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(json);
-        }
-
-        private async Task<T?> NonGetAsync<T>(string method, string uri, object? data = null)
+        private async Task<T?> PerformRequestAsync<T>(string method, string uri, object? data = null)
         {
             var content = new StringContent(string.Empty);
             if ( data != null )
-            {
                 content = new StringContent(JsonConvert.SerializeObject(data), System.Text.Encoding.UTF8, "application/json");
-            }
             var request = new HttpRequestMessage(new HttpMethod(method), uri) { Content = content };
             var response = await _httpClient.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw await HandleNonSuccessResponse(response);
+            }
             var json = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T?>(json);
         }
 
-        private async Task<Exception> HandleNonSuccessResponse(HttpRequestException e, HttpResponseMessage response)
+        private static async Task<Exception> HandleNonSuccessResponse(HttpResponseMessage response)
         {
             var content = await response.Content.ReadAsStringAsync();
             try
@@ -57,27 +53,31 @@ namespace BeGiftee.Source.Services.Network
                     return new ApiException(errorResponse);
                 }
             }
-            catch (JsonException)
+            catch (JsonException e)
             {
                 throw new JsonException("Failed when trying to deserialize error message from the server", e);
             }
 
-            return new Exception("An error occurred while processing the request.", e);
+            return new Exception("An error occurred while processing the request.");
+        }
+        public async Task<T?> PostAsync<T>(string uri)
+        {
+            return await this.PerformRequestAsync<T>("GET", uri);
         }
 
         public async Task<T?> PostAsync<T>(string uri, object data)
         {
-            return await this.NonGetAsync<T>("POST", uri, data);
+            return await this.PerformRequestAsync<T>("POST", uri, data);
         }
 
         public async Task<T?> PatchAsync<T>(string uri, object data)
         {
-            return await this.NonGetAsync<T>("POST", uri, data);
+            return await this.PerformRequestAsync<T>("PATCH", uri, data);
         }
 
-        public async Task DeleteAsync(string uri)
+        public async Task<T?> DeleteAsync<T>(string uri)
         {
-            await _httpClient.DeleteAsync(uri);
+            return await this.PerformRequestAsync<T>("DELETE", uri);
         }
     }
 }

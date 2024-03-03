@@ -11,20 +11,25 @@ namespace BeGiftee.Source
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .RegisterAppServices()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddSingleton<HttpService>();
-            builder.Services.AddSingleton<IAuthenticationService, HttpAuthenticationService>();
-
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            return builder.Build(); ; 
+        }
+
+        public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddSingleton<HttpService>();
+            mauiAppBuilder.Services.AddSingleton<IAuthenticationService, HttpAuthenticationService>();
+            return mauiAppBuilder;
         }
     }
 }

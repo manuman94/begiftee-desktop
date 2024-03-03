@@ -1,5 +1,5 @@
 ﻿
-namespace BeGiftee.Source.Services.Network.DTO
+namespace BeGiftee.Source.Services.Network.Dto
 {
     public class AuthResponseDto
     {
