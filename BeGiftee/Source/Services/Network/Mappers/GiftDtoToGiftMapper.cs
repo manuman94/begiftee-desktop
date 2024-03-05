@@ -10,11 +10,11 @@ namespace BeGiftee.Source.Services.Network.Mappers
             return new Gift
             {
                 Id = giftDto._id,
-                Title = giftDto.title,
-                Content = giftDto.content,
-                CreatedAt = giftDto.createdAt,
-                UpdatedAt = giftDto.updatedAt,
-                Labels = giftDto.labels.Select(labelDto => new LabelDtoToLabelMapper().Map(labelDto)).ToArray(),
+                Title = giftDto.Title,
+                Content = giftDto.Content,
+                CreatedAt = giftDto.CreatedAt,
+                UpdatedAt = giftDto.UpdatedAt,
+                Labels = giftDto.Labels.Select(labelDto => new LabelDtoToLabelMapper().Map(labelDto)).ToArray(),
             };
         }
     }

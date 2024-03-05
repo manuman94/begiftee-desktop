@@ -17,12 +17,12 @@ public partial class ForgotPasswordPage : ContentPage
         try
         {
             await _authenticationService.RecoverPassword(email.Text);
-            Application.Current.MainPage = new NavigationPage(new MyGiftList());
+            await Application.Current.MainPage.DisplayAlert("Password recovery", "A recovery link has been sent to your email address", "Okay!");
             await Navigation.PopToRootAsync();
         }
         catch (Exception ex)
         {
-            await Application.Current.MainPage.DisplayAlert("(DEBUG) Failed asking for the recovery email", ex.Message, "Go back");
+            await Application.Current.MainPage.DisplayAlert("Failed asking for the recovery email", ex.Message, "Go back");
         }
     }
 

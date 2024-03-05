@@ -11,7 +11,7 @@ namespace BeGiftee.Source.Services.Api
     {
         Task<Gift[]> GetAllMyGifts();
         Task<Gift> CreateGift(Gift gift);
-        Task<Gift> EditGift(string giftId);
+        Task<Gift> EditGift(Gift gift);
         Task DeleteGift(string giftId);
     }
 }

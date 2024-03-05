@@ -1,11 +1,11 @@
-﻿using BeGiftee.Source.Helpers;
+﻿using BeGiftee.Source.ContentPages.Gifts;
+using BeGiftee.Source.Helpers;
 using BeGiftee.Source.Models;
 using BeGiftee.Source.Services.Api;
+using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using Label = BeGiftee.Source.Models.Label;
 
 namespace BeGiftee.Source.ViewModels
 {
@@ -21,21 +21,32 @@ namespace BeGiftee.Source.ViewModels
 
         public async Task LoadMyGifts()
         {
-            Trace.WriteLine("GiftListViewModel -> LoadMyGifts");
-            try
-            {
-                Gifts = new ObservableCollection<Gift>(await _giftService.GetAllMyGifts());
-                OnPropertyChanged("Gifts");
-            } catch(Exception ex)
-            {
-                throw ex;
-            }
+            Gifts = new ObservableCollection<Gift>(await _giftService.GetAllMyGifts());
+            OnPropertyChanged(nameof(Gifts));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public async void EditGift(Gift gift)
+        {
+        }
+
+        public async void RemoveGift(Gift gift)
+        {
+            try
+            {
+                await _giftService.DeleteGift(gift.Id);
+                await LoadMyGifts();
+                OnPropertyChanged(nameof(Gifts));
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error deleting gift", ex.Message, "Go back");
+            }
         }
     }
 }

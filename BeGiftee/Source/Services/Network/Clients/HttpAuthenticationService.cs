@@ -18,8 +18,8 @@ namespace BeGiftee.Source.Services.Network.Clients
 
         public async Task<bool> Login(string username, string password)
         {
-            var loginData = new { username, password };
-            var loginResponse = await _httpService.PostAsync<AuthResponseDto>(ApiEndpoints.Login, loginData);
+            var loginData = new { username, password }; // TODO create type and replace var
+            AuthResponseDto loginResponse = await _httpService.PostAsync<AuthResponseDto>(ApiEndpoints.Login, loginData);
 
             if (loginResponse != null && !string.IsNullOrEmpty(loginResponse.access_token))
             {
@@ -34,8 +34,8 @@ namespace BeGiftee.Source.Services.Network.Clients
 
         public async Task<bool> Register(string email, string username, string password)
         {
-            var registerData = new { email, username, password };
-            var registerResponse = await _httpService.PostAsync<AuthResponseDto>(ApiEndpoints.Register, registerData);
+            var registerData = new { email, username, password }; // TODO create type and replace var
+            AuthResponseDto registerResponse = await _httpService.PostAsync<AuthResponseDto>(ApiEndpoints.Register, registerData);
 
             if (registerResponse != null && !string.IsNullOrEmpty(registerResponse.access_token))
             {

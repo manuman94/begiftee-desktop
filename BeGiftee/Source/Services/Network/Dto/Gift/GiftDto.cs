@@ -3,12 +3,12 @@ namespace BeGiftee.Source.Services.Network.Dto.Gift
 {
     public class GiftDto
     {
-        public bool archived { get; set; }
-        public LabelDto[] labels { get; set; }
+        public bool Archived { get; set; }
+        public LabelDto[] Labels { get; set; }
         public string _id { get; set; }
-        public string title { get; set; }
-        public string content { get; set; }
-        public string createdAt { get; set; }
-        public string updatedAt { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public string CreatedAt { get; set; }
+        public string UpdatedAt { get; set; }
     }
 }

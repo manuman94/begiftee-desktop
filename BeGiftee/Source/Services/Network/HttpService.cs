@@ -1,17 +1,15 @@
 ﻿using System.Net.Http.Headers;
-using System.Net;
 using BeGiftee.Source.Services.Network.Exceptions;
 using Newtonsoft.Json;
 using BeGiftee.Source.Services.Network.Dto.Generic;
-using System.Diagnostics;
 
 namespace BeGiftee.Source.Services.Network
 {
     public class HttpService
     {
         private readonly HttpClient _httpClient;
-        private string _jwtToken;
-        private readonly string _baseURL = "http://localhost:3000";
+        private string _jwtToken; // TODO Do I want to store the raw value here?
+        private readonly string _baseURL = "http://localhost:3000"; // TODO create environment file to store different environment endpoints
 
         public HttpService()
         {
@@ -61,9 +59,9 @@ namespace BeGiftee.Source.Services.Network
 
             return new Exception("An error occurred while processing the request.");
         }
+
         public async Task<T?> GetAsync<T>(string uri)
         {
-            Trace.WriteLine("HttpService -> GetAsync Uri: " + uri);
             return await this.PerformRequestAsync<T>("GET", uri);
         }
 

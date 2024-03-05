@@ -71,22 +71,28 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-	  <Compile Update="Source\Pages\Auth\ForgotPassword\ForgotPasswordPage.xaml.cs">
+	  <Compile Update="Source\ContentPages\Auth\ForgotPassword\ForgotPasswordPage.xaml.cs">
 	    <DependentUpon>ForgotPasswordPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Source\ContentPages\Gifts\MyGiftListPage.xaml.cs">
+	    <DependentUpon>MyGiftListPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 	
 	<ItemGroup>
-	  <MauiXaml Update="Source\Pages\Auth\ForgotPassword\ForgotPasswordPage.xaml">
+	  <MauiXaml Update="Source\ContentPages\Auth\ForgotPassword\ForgotPasswordPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Source\Pages\MyGiftList\MyGiftList.xaml">
+	  <MauiXaml Update="Source\ContentPages\Gifts\GiftFormPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Source\Pages\Auth\RegisterPage\RegisterPage.xaml">
+	  <MauiXaml Update="Source\ContentPages\Gifts\MyGiftListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Source\Views\Auth\LoginView.xaml">
+	  <MauiXaml Update="Source\ContentPages\Auth\Register\RegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Source\ContentViews\Auth\LoginView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

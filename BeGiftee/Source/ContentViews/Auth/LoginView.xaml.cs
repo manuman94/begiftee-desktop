@@ -20,12 +20,12 @@ public partial class LoginView : ContentView
         try
         {
             await _authenticationService.Login(username.Text, password.Text);
-            Application.Current.MainPage = new NavigationPage(new MyGiftList());
+            Application.Current.MainPage = new NavigationPage(new MyGiftListPage());
             await Navigation.PopToRootAsync();
         }
         catch (Exception ex)
         {
-            await Application.Current.MainPage.DisplayAlert("(DEBUG) Login incorrect", ex.Message, "Go back");
+            await Application.Current.MainPage.DisplayAlert("Login incorrect", ex.Message, "Go back");
         }
     }
 
