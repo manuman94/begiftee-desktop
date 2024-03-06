@@ -31,10 +31,6 @@ namespace BeGiftee.Source.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public async void EditGift(Gift gift)
-        {
-        }
-
         public async void RemoveGift(Gift gift)
         {
             try

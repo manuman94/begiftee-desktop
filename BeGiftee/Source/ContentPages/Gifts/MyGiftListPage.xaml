@@ -64,7 +64,7 @@
                                 <Button Grid.Column="1" Text="Edit" 
                                         Clicked="OnEditGiftButtonClicked" 
                                         CommandParameter="{Binding .}"/>
-                                <Button Grid.Column="2" BackgroundColor="{StaticResource Magenta}" 
+                                <Button Grid.Column="2" BackgroundColor="{StaticResource Danger}" 
                                         Text="Remove" 
                                         Clicked="OnRemoveGiftButtonClicked" 
                                         CommandParameter="{Binding .}"/>

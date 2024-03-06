@@ -26,7 +26,7 @@ public partial class MyGiftListPage : ContentPage
 
     private async void OnNewGiftButtonClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new GiftFormPage());
+        await Navigation.PushAsync(new GiftAddPage());
     }
 
     protected override async void OnAppearing()
@@ -39,13 +39,17 @@ public partial class MyGiftListPage : ContentPage
     {
         var button = (Button)sender;
         var giftToEdit = (Gift)button.CommandParameter;
-        await Navigation.PushAsync(new GiftFormPage(giftToEdit));
+        await Navigation.PushAsync(new GiftEditPage(giftToEdit));
     }
 
     public async void OnRemoveGiftButtonClicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
         var gift = (Gift)button.CommandParameter;
-        ((GiftListViewModel)BindingContext).RemoveGift(gift);
+        bool isDeletionConfirmed = await Application.Current.MainPage.DisplayAlert("Delete confirmation", "Are you sure you want to edit this gift?", "Yes, delete it", "Cancel");
+        if (isDeletionConfirmed)
+        {
+            ((GiftListViewModel)BindingContext).RemoveGift(gift);
+        }
     }
 }

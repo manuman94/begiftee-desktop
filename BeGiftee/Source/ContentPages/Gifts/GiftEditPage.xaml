@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BeGiftee.Source.ContentPages.Gifts.GiftEditPage"
+             Title="Edit gift">
+    <VerticalStackLayout>
+
+        <Entry x:Name="title" Placeholder="Title" Text="{Binding giftToEdit.Title, Mode=TwoWay}" />
+        <Editor x:Name="content" Placeholder="Gift details..."  Text="{Binding giftToEdit.Content, Mode=TwoWay}"
+                HeightRequest="100" />
+
+        <Button Text="Save"
+                Clicked="OnEditGiftButtonClicked"/>
+
+        <HorizontalStackLayout Spacing="0">
+            <Button Text="Go back" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" 
+                    BackgroundColor="Transparent" Clicked="OnGoBackButtonClicked" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

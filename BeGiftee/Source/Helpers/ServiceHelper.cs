@@ -1,6 +1,6 @@
 ﻿namespace BeGiftee.Source.Helpers
 {
-    internal class ServiceHelper
+    public class ServiceHelper
     {
         public static TService GetService<TService>()
                 => Current.GetService<TService>();
