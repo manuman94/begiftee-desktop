@@ -2,6 +2,7 @@
 using BeGiftee.Source.Services.Network.Exceptions;
 using Newtonsoft.Json;
 using BeGiftee.Source.Services.Network.Dto.Generic;
+using System.Net.Http;
 
 namespace BeGiftee.Source.Services.Network
 {
@@ -11,12 +12,10 @@ namespace BeGiftee.Source.Services.Network
         private string _jwtToken; // TODO Do I want to store the raw value here?
         private readonly string _baseURL = "http://localhost:3000"; // TODO create environment file to store different environment endpoints
 
-        public HttpService()
+        public HttpService(HttpClient httpClient)
         {
-            _httpClient = new HttpClient
-            {
-                BaseAddress = new Uri(_baseURL)
-            };
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _httpClient.BaseAddress = new Uri(_baseURL);
             _jwtToken = string.Empty;
         }
 
@@ -62,22 +61,22 @@ namespace BeGiftee.Source.Services.Network
 
         public async Task<T?> GetAsync<T>(string uri)
         {
-            return await this.PerformRequestAsync<T>("GET", uri);
+            return await this.PerformRequestAsync<T>(HttpMethod.Get.ToString(), uri);
         }
 
         public async Task<T?> PostAsync<T>(string uri, object data)
         {
-            return await this.PerformRequestAsync<T>("POST", uri, data);
+            return await this.PerformRequestAsync<T>(HttpMethod.Post.ToString(), uri, data);
         }
 
         public async Task<T?> PatchAsync<T>(string uri, object data)
         {
-            return await this.PerformRequestAsync<T>("PATCH", uri, data);
+            return await this.PerformRequestAsync<T>(HttpMethod.Patch.ToString(), uri, data);
         }
 
         public async Task<T?> DeleteAsync<T>(string uri)
         {
-            return await this.PerformRequestAsync<T>("DELETE", uri);
+            return await this.PerformRequestAsync<T>(HttpMethod.Delete.ToString(), uri);
         }
     }
 }
