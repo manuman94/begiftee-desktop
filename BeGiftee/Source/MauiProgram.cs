@@ -28,6 +28,7 @@ namespace BeGiftee.Source
 
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
+            mauiAppBuilder.Services.AddSingleton<HttpClient>();
             mauiAppBuilder.Services.AddSingleton<HttpService>();
             mauiAppBuilder.Services.AddSingleton<IAuthenticationService, HttpAuthenticationService>();
             mauiAppBuilder.Services.AddSingleton<IGiftService, HttpGiftService>();
