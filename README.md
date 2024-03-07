@@ -66,12 +66,6 @@ Before you begin, ensure you have the following tools installed:
 
 This project has all rights reserved Jos� Manuel Blasco 2024 - see the [LICENSE.md](LICENSE) file for details.
 
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
 ## Contact
 
 For any queries or further information, you can reach us at:
